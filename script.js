@@ -6,7 +6,17 @@ const getMedian = (array) => {
     array.length % 2 === 0
       ? getMean([sorted[array.length / 2], sorted[array.length / 2 - 1]])
       : sorted[Math.floor(array.length / 2)];
+  return median;
 }
+
+const getMode = (array) => {
+  const counts = {};
+  array.forEach((el) => {
+    counts[el] = (counts[el] || 0) + 1;
+  })
+
+}
+
 
 const calculate = () => {
   const value = document.querySelector("#numbers").value;
@@ -14,6 +24,8 @@ const calculate = () => {
   const numbers = array.map(el => Number(el)).filter(el => !isNaN(el));
   
   const mean = getMean(numbers);
+  const median = getMedian(numbers);
 
   document.querySelector("#mean").textContent = mean;
+  document.querySelector("#median").textContent = median;
 }
